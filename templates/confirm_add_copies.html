@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Add Copies</title>
+</head>
+<body>
+    <h1>Book Already Exists</h1>
+    <p>You are trying to add a book with ISBN: {{ book.isbn }}</p>
+    <p>Title: {{ book.title }}</p>
+    <p>Author: {{ book.author }}</p>
+    <p>Available Copies: {{ book.quantity }}</p>
+
+    <h2>Do you want to add more copies?</h2>
+
+    <form method="POST" action="{{ url_for('confirm_add_copies') }}">
+        <input type="hidden" name="isbn" value="{{ book.isbn }}">
+        <label for="additional_quantity">Number of additional copies:</label>
+        <input type="number" name="additional_quantity" id="additional_quantity" min="1" required><br><br>
+        <button type="submit">Add Copies</button>
+        <a href="{{ url_for('add_book') }}">Cancel</a>
+    </form>
+</body>
+</html>
