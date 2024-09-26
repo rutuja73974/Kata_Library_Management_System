@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+</head>
+<body>
+    <h1>Welcome to the Library</h1>
+    <a href="{{ url_for('add_book') }}">Add a New Book</a> | 
+    <a href="{{ url_for('borrow_book') }}">Borrow a Book</a> | 
+    <a href="{{ url_for('return_book') }}">Return a Book</a> | 
+    <a href="{{ url_for('available_books') }}">View Available Books</a>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>
