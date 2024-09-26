@@ -9,7 +9,7 @@
     <h1>Available Books</h1>
     <ul>
         {% for book in books %}
-            <li>{{ book.isbn }} - {{ book.title }} by {{ book.author }} ({{ book.year }})</li>
+            <li>{{ book.isbn }} - {{ book.title }} by {{ book.author }} ({{ book.year }}). Available Copies: {{ book.quantity }}</li>
         {% endfor %}
     </ul>
     <a href="{{ url_for('index') }}">Back to Home</a>
