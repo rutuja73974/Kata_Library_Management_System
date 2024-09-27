@@ -4,14 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: auto; 
+            max-width: 800px; 
+            background: #fff; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+        }
+
+        th, td {
+            padding: 10px; 
+            text-align: left; 
+            border-bottom: 1px solid #ccc; 
+        }
+
+        th {
+            background-color: #007bff; 
+            color: white; 
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; 
+        }
+
+        a {
+            display: inline-block; 
+            background-color: #007bff; 
+            color: white; 
+            padding: 10px 15px; 
+            border-radius: 5px; 
+            text-align: center; 
+            text-decoration: none; 
+            margin-top: 20px;
+            transition: background-color 0.3s; 
+            text-align: center; 
+        }
+
+        a:hover {
+            background-color: #0056b3; 
+        }
+    </style>
 </head>
 <body>
     <h1>Available Books</h1>
-    <ul>
-        {% for book in books %}
-            <li>{{ book.isbn }} - {{ book.title }} by {{ book.author }} ({{ book.year }}). Available Copies: {{ book.quantity }}</li>
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Available Copies</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.isbn }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.quantity }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <a href="{{ url_for('index') }}">Back to Home</a>
 </body>
 </html>

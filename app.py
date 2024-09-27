@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 app = Flask(__name__)
 app.secret_key = 'secret_key'
 
-# Book Class
+
 # Book Class
 class Book:
     def __init__(self, isbn, title, author, year, quantity):

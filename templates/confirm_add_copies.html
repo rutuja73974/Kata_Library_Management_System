@@ -4,20 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirm Add Copies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        p {
+            text-align: center; 
+            margin: 5px 0; 
+            line-height: 1.5;
+        }
+
+        form {
+            max-width: 400px; 
+            margin: 20px auto; 
+            background: #fff; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        }
+
+        label {
+            display: block; 
+            margin-bottom: 5px; 
+            font-weight: bold; 
+            color: #333; 
+        }
+
+        input[type="number"] {
+            width: 100%; 
+            padding: 10px; 
+            margin-bottom: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+            font-size: 16px; 
+        }
+
+        button {
+            background-color: #007bff; 
+            color: white; 
+            padding: 10px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background-color 0.3s; 
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3; 
+        }
+
+        a {
+            display: inline-block; 
+            text-align: center; 
+            margin-top: 10px;
+            color: #007bff; 
+            text-decoration: none; 
+            font-size: 16px; 
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <h1>Book Already Exists</h1>
-    <p>You are trying to add a book with ISBN: {{ book.isbn }}</p>
-    <p>Title: {{ book.title }}</p>
-    <p>Author: {{ book.author }}</p>
-    <p>Available Copies: {{ book.quantity }}</p>
+    <p>You are trying to add a book with ISBN: <strong>{{ book.isbn }}</strong></p>
+    <p>Title: <strong>{{ book.title }}</strong></p>
+    <p>Author: <strong>{{ book.author }}</strong></p>
+    <p>Available Copies: <strong>{{ book.quantity }}</strong></p>
 
-    <h2>Do you want to add more copies?</h2>
+    <h2 style="text-align: center;">Do you want to add more copies?</h2>
 
     <form method="POST" action="{{ url_for('confirm_add_copies') }}">
         <input type="hidden" name="isbn" value="{{ book.isbn }}">
         <label for="additional_quantity">Number of additional copies:</label>
-        <input type="number" name="additional_quantity" id="additional_quantity" min="1" required><br><br>
+        <input type="number" name="additional_quantity" id="additional_quantity" min="1" required>
+
         <button type="submit">Add Copies</button>
         <a href="{{ url_for('add_book') }}">Cancel</a>
     </form>

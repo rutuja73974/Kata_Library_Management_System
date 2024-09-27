@@ -4,18 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        li {
+            background: #e2e2e2;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Flash messages styling */
+        .flash-messages {
+            background-color: #dff0d8;
+            color: #3c763d;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            a {
+                display: block;
+                margin: 10px 0;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to the Library</h1>
-    <a href="{{ url_for('add_book') }}">Add a New Book</a> | 
-    <a href="{{ url_for('borrow_book') }}">Borrow a Book</a> | 
-    <a href="{{ url_for('return_book') }}">Return a Book</a> | 
-    <a href="{{ url_for('available_books') }}">View Available Books</a>
+    <div style="text-align: center;">
+        <a href="{{ url_for('add_book') }}">Add a New Book</a> | 
+        <a href="{{ url_for('borrow_book') }}">Borrow a Book</a> | 
+        <a href="{{ url_for('return_book') }}">Return a Book</a> | 
+        <a href="{{ url_for('available_books') }}">View Available Books</a>
+    </div>
 
     <!-- Flash Messages -->
     {% with messages = get_flashed_messages() %}
       {% if messages %}
-        <ul>
+        <ul class="flash-messages">
           {% for message in messages %}
             <li>{{ message }}</li>
           {% endfor %}
